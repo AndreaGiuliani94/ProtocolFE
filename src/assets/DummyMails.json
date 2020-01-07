@@ -1,0 +1,32 @@
+[
+    {
+        "protId": "00101012020",
+        "dataInvio": "01/01/2020",
+        "dataRicezione": "01/01/2020",
+        "tipo": 3,
+        "mittente": "ciccio",
+        "destinatario": "pasticcio",
+        "oggetto": "Auguri!",
+        "allegati": 1
+    },
+    {
+        "protId": "00201042010",
+        "dataInvio": "01/04/2010",
+        "dataRicezione": "02/04/2010",
+        "tipo": 1,
+        "mittente": "gino",
+        "destinatario": "pino",
+        "oggetto": "Memorandum",
+        "allegati": 0
+    },
+    {
+        "protId": "00301102015",
+        "dataInvio": "01/10/2015",
+        "dataRicezione": "",
+        "tipo": 2,
+        "mittente": "gianna",
+        "destinatario": "maria",
+        "oggetto": "Appunti",
+        "allegati": 3
+    }
+]

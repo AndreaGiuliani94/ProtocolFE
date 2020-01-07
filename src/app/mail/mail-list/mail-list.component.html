@@ -1,0 +1,26 @@
+<div>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Data di Invio</th>
+      <th>Data di Ricezione</th>
+      <th>Tipo</th>
+      <th>Mittente</th>
+      <th>Destinatario</th>
+      <th>Oggetto</th>
+      <th>Numero di Allegati</th>
+    </tr>
+    <tbody>
+      <tr *ngFor = "let mail of mails">
+        <td>{{mail.protId}}</td>
+        <td>{{mail.dataInvio}}</td>
+        <td>{{mail.dataRicezione}}</td>
+        <td>{{mail.tipo}}</td>
+        <td>{{mail.mittente}}</td>
+        <td>{{mail.destinatario}}</td>
+        <td>{{mail.oggetto}}</td>
+        <td>{{mail.allegati}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
