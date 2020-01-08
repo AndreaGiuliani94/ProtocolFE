@@ -1,5 +1,5 @@
 export enum Tipo {
-  Entrata = 1,
-  Uscita,
-  Interna
+  'Entrata' = 1,
+  'Uscita' = 2,
+  'Interna' = 3
 }

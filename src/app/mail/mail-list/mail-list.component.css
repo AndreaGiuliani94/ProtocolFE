@@ -1,0 +1,12 @@
+table {
+  width: 100%;
+  text-align: left;
+}
+th {
+  font-size: medium;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+td {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
