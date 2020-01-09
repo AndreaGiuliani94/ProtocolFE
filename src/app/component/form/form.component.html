@@ -1,0 +1,44 @@
+<form [formGroup]="insertForm" (ngSubmit)="onSubmit()">
+  <label>
+    Data di Invio:
+    <input type="date" formControlName="dataInvio">
+  </label>
+  <br>
+
+  <label>
+    Data di Ricezione:
+    <input type="date" formControlName="dataRicezione">
+  </label>
+  <br>
+  <label>
+    Mittente:
+    <input type="text" formControlName="mittente">
+  </label>
+  <br>
+  <label>
+    Destinatario:
+    <input type="text" formControlName="destinatario">
+  </label>
+  <br>
+  <label>
+    Oggetto:
+    <input type="text" formControlName="oggetto">
+  </label>
+  <br>
+  <label>
+    Allegati:
+    <input type="number" formControlName="allegati">
+  </label>
+  <br>
+
+  <select>Tipo :
+    <option value="1">Entrata</option>
+    <option value="2">Uscita</option>
+    <option value="3">Interna</option>
+</select>
+
+
+  <br>
+
+  <button type="submit">Submit</button>
+</form>

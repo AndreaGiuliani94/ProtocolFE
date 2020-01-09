@@ -16,12 +16,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { WelcomeComponent } from './component/welcome/welcome.component';
+import { FormComponent } from './component/form/form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     MailListComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import { WelcomeComponent } from './component/welcome/welcome.component';
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
