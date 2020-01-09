@@ -26,40 +26,55 @@
 </div> -->
 
 <div>
-  <table mat-table [dataSource]= 'mails' class="mat-elevation-z8" matSort (matSortChange)="sortData($event)">
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header='protId'> ID </th>
+  <table
+  mat-table [dataSource]= 'mails'
+  matSort
+  class="mat-elevation-z8" >
+
+    <ng-container matColumnDef="protId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
       <td mat-cell *matCellDef="let mail"> {{mail.protId}} </td>
     </ng-container>
+
     <ng-container matColumnDef="tipo">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header='tipo'> Tipo </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </th>
       <td mat-cell *matCellDef="let mail"> {{mail.tipo}} </td>
     </ng-container>
+
     <ng-container matColumnDef="oggetto" >
-      <th mat-header-cell *matHeaderCellDef mat-sort-header='oggetto'> Oggetto </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Oggetto </th>
       <td mat-cell *matCellDef="let mail"> {{mail.oggetto}} </td>
     </ng-container>
+
     <ng-container matColumnDef="allegati" >
-      <th mat-header-cell *matHeaderCellDef mat-sort-header='allegati'> Allegati </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Allegati </th>
       <td mat-cell *matCellDef="let mail"> {{mail.allegati}} </td>
     </ng-container>
+
     <ng-container matColumnDef="dataInvio" >
-      <th mat-header-cell *matHeaderCellDef mat-sort-header='dataInvio'> Data di Invio </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Data di Invio </th>
       <td mat-cell *matCellDef="let mail"> {{mail.dataInvio}} </td>
     </ng-container>
     <ng-container matColumnDef="dataRicezione" >
-      <th mat-header-cell *matHeaderCellDef mat-sort-header='dataRicezione'> Data di Ricezione </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Data di Ricezione </th>
       <td mat-cell *matCellDef="let mail"> {{mail.dataRicezione}} </td>
     </ng-container>
+
     <ng-container matColumnDef="mittente" >
-      <th mat-header-cell *matHeaderCellDef mat-sort-header='mittente'> Mittente </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Mittente </th>
       <td mat-cell *matCellDef="let mail"> {{mail.mittente}} </td>
     </ng-container>
+
     <ng-container matColumnDef="destinatario" >
-      <th mat-header-cell *matHeaderCellDef mat-sort-header='destinatario'> Destinatario </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Destinatario </th>
       <td mat-cell *matCellDef="let mail"> {{mail.destinatario}} </td>
     </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+
   </table>
+
+  <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[2 ,5 , 10, 50]"></mat-paginator>
+
 </div>

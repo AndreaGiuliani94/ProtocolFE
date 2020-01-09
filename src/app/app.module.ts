@@ -10,16 +10,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MailListComponent } from './mail/mail-list/mail-list.component';
+import { MailListComponent } from './component/mail-list/mail-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { WelcomeComponent } from './component/welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MailListComponent
+    MailListComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
