@@ -38,6 +38,8 @@ export class MailListComponent implements OnInit {
     this.mailService.getProtocols().subscribe(m => {
       this.mails = new MatTableDataSource(m);
       this.mails.sort = this.sort;
-      this.mails.paginator = this.paginator; } );
+      this.mails.paginator = this.paginator;
+      console.log(this.mails);
+    } );
   }
 }

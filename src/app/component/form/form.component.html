@@ -1,5 +1,5 @@
-<form [formGroup]="insertForm" (ngSubmit)="onSubmit()">
-  <label>
+ <form [formGroup]="insertForm" (ngSubmit)="onSubmit()">
+  <!-- <label>
     Data di Invio:
     <input type="date" formControlName="dataInvio">
   </label>
@@ -40,5 +40,58 @@
 
   <br>
 
-  <button type="submit">Submit</button>
+  <button type="submit">Submit</button> -->
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" formControlName="dataInvio" placeholder="Data di Invio">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+
+    <br>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker1" formControlName="dataRicezione" placeholder="Data di Ricezione">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+      <input matInput placeholder="Mittente" formControlName="mittente">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+      <input matInput placeholder="Destinatario" formControlName="destinatario">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+      <input matInput placeholder="Oggetto" formControlName="oggetto">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+      <input matInput placeholder="Allegati" formControlName="allegati">
+    </mat-form-field>
+
+    <br>
+    
+    <mat-form-field>
+      <mat-label>Tipo</mat-label>
+      <mat-select formControlName="tipo">
+        <mat-option *ngFor="let tipo of tipi" [value]="tipo">
+          {{tipo}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <button type="submit" mat-icon-button color="accent" aria-label="Example icon-button with a heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
 </form>

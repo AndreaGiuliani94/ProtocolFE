@@ -14,12 +14,13 @@ export class FormComponent implements OnInit {
 
   insertForm: FormGroup;
   mail: Mail;
+  tipi: Tipo [] = [ Tipo.Entrata, Tipo.Interna, Tipo.Uscita ];
 
   constructor(private mailService: MailService, private fb: FormBuilder) {
     this.insertForm = this.fb.group({
       dataInvio: '',
       dataRicezione: '',
-      tipo: Tipo.Entrata,
+      tipo: '',
       mittente: '',
       destinatario: '',
       oggetto: '',
@@ -29,11 +30,12 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
   }
-  onSubmit(newMail: Mail) {
+  onSubmit() {
+    const newMail: Mail = { ...this.mail, ...this.insertForm.value};
     console.warn('Your protocol has been submitted', newMail);
     this.mailService.insertNewMail(newMail).subscribe(m => {
-      console.log(m); }
+      console.log(newMail); },
+      error => console.log(error)
     );
   }
-
 }

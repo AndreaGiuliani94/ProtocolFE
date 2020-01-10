@@ -9,11 +9,20 @@ import { map } from 'rxjs/operators';
 })
 export class MailService {
 
-  private url = '/assets/DummyMails.json';
-
+  private url = 'https://localhost:44306/api/MailsAPI';
+  private counter = 4;
   insertNewMail(newMail: Mail): Observable <Mail>  {
+    const mail = {protId:'',
+    dataInvio: '',
+    dataRicezione: 'string',
+    tipo: 0,
+    mittente: 'string',
+    destinatario: 'string',
+    oggetto: 'string',
+    allegati: 0}
     const header = new HttpHeaders({'Content-Type' : 'application/json'});
-    return this.http.post<Mail>(this.url, newMail, {headers: header} );
+    newMail.protId = '';
+    return this.http.post<Mail>(this.url, mail , {headers: header} );
   }
   findMails(protId: number, filter: string, sortOrder: string, pageNumber: number, pageSize: number) {
         return this.http.get(this.url, {
@@ -26,7 +35,7 @@ export class MailService {
       });
   }
   getProtocols(): Observable<Mail[]> {
-    return this.http.get<Mail[]>('/assets/DummyMails.json');
+    return this.http.get<Mail[]>(this.url);
   }
   constructor(private http: HttpClient) { }
 }
