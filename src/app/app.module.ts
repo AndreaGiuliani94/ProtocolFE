@@ -23,6 +23,7 @@ import { MobileListComponent } from './component/mobile-list/mobile-list.compone
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { PippoComponent } from './pippo/pippo.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MailListComponent,
     WelcomeComponent,
     FormComponent,
-    MobileListComponent
+    MobileListComponent,
+    PippoComponent
   ],
   imports: [
     BrowserModule,
