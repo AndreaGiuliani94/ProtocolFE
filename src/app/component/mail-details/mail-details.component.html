@@ -1,0 +1,31 @@
+<mat-card class="dashboard-card" *ngIf = "card">
+  <mat-card-header>
+    <mat-card-title>
+      <h2>{{card.title}}</h2>
+      <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item>Update</button>
+        <button mat-menu-item (click)="deleteMail(card.body.protId)">Delete</button>
+      </mat-menu>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="dashboard-card-content">
+    <div>
+      <h3> ID: </h3>{{card.body.protId}}
+    </div>
+    <div>
+      <h3> Data di Invio </h3>{{card.body.dataInvio}}</div>
+    <div>
+      <h3> Data di Ricezione </h3>{{card.body.dataRicezione}}</div>
+    <div>
+      <h3> Mittente </h3>{{card.body.mittente}}</div>
+    <div>
+      <h3> Destinatario </h3>{{card.body.destinatario}}</div>
+    <div>
+      <h3> N° Allegati </h3>{{card.body.allegati}}</div>
+    <div>
+      <h3> Tipo di Mail </h3>{{card.body.tipo}}</div>
+  </mat-card-content>
+</mat-card>

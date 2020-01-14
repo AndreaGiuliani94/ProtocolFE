@@ -17,6 +17,7 @@ export class MailService {
     newMail.protId = '';
     return this.http.post<Mail>(this.url, newMail , {headers: header} );
   }
+
   findMails(protId: number, filter: string, sortOrder: string, pageNumber: number, pageSize: number) {
         return this.http.get(this.url, {
           params: new HttpParams()
@@ -27,8 +28,18 @@ export class MailService {
               .set('pageSize', pageSize.toString())
       });
   }
+
   getProtocols(): Observable<Mail[]> {
     return this.http.get<Mail[]>(this.url);
   }
   constructor(private http: HttpClient) { }
+
+  deleteProtocol(id: string) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
+
+  getDetails(id: string): Observable<Mail> {
+    return this.http.get<Mail>(`${this.url}/${id}`);
+  }
+
 }
