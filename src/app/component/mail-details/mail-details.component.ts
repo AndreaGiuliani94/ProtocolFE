@@ -6,8 +6,9 @@ import { MailService } from 'src/app/services/mail.service';
 import { Card } from 'src/app/model/card';
 import { element } from 'protractor';
 import { Observable } from 'rxjs';
-import { MatCardSmImage } from '@angular/material';
+import { MatCardSmImage, MatDialogConfig, MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-mail-details',
@@ -18,6 +19,7 @@ export class MailDetailsComponent implements OnInit {
   public card: Card;
   constructor(
     private mailService: MailService,
+    private dialog: MatDialog,
     private route: ActivatedRoute,
     private router: Router) {}
 
@@ -38,6 +40,17 @@ export class MailDetailsComponent implements OnInit {
       r => {
         this.router.navigate(['/mobile']);
       }
+    );
+  }
+
+  editMail(mail: Mail) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = mail;
+    const dialogRef = this.dialog.open(DialogComponent,
+      dialogConfig);
+    dialogRef.afterClosed().subscribe(
+      val => console.log('Dialog output:', val)
     );
   }
 }

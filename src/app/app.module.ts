@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 // tslint:disable-next-line: max-line-length
-import { MatFormFieldModule, MatDatepicker, MatDatepickerModule, MatInputModule, MatNativeDateModule, MatRadioModule, MatSelectModule, MatOptionModule, MatSlideToggleModule } from '@angular/material';
+import { MatFormFieldModule, MatDatepicker, MatDatepickerModule, MatInputModule, MatNativeDateModule, MatRadioModule, MatSelectModule, MatOptionModule, MatSlideToggleModule, MatDialogModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -72,7 +72,8 @@ import { DialogComponent } from './component/dialog/dialog.component';
     MatRadioModule,
     MatSelectModule,
     MatOptionModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatDialogModule
   ],
   exports: [
     MatButtonModule,
@@ -90,6 +91,7 @@ import { DialogComponent } from './component/dialog/dialog.component';
     MatOptionModule,
     MatSlideToggleModule
   ],
+  entryComponents: [DialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

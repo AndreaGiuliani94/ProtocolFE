@@ -6,7 +6,7 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu" xPosition="before">
-        <button mat-menu-item>Update</button>
+        <button mat-menu-item (click)="editMail(card.body)">Update</button>
         <button mat-menu-item (click)="deleteMail(card.body.protId)">Delete</button>
       </mat-menu>
     </mat-card-title>

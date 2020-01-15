@@ -11,7 +11,7 @@
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
               <button mat-menu-item [routerLink]="['/details', card.body.protId]">Details</button>
-              <button mat-menu-item>Update</button>
+              <button mat-menu-item (click)="editMail(card.body)">Update</button>
               <button mat-menu-item (click)="deleteMail(card.body.protId)">Delete</button>
             </mat-menu>
           </mat-card-title>
@@ -33,4 +33,9 @@
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
+
+  <button class="plus-button" mat-icon-button (click)="editMail(mail)">
+    <mat-icon>add_circle</mat-icon>
+  </button>
+
 </div>

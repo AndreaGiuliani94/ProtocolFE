@@ -6,7 +6,10 @@ import { MailService } from 'src/app/services/mail.service';
 import { Card } from 'src/app/model/card';
 import { element } from 'protractor';
 import { Observable } from 'rxjs';
-import { MatCardSmImage } from '@angular/material';
+import { MatCardSmImage, MatDialogConfig, MatDialog } from '@angular/material';
+import { DialogComponent } from '../dialog/dialog.component';
+import { Tipo } from 'src/app/model/tipo.enum';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-mobile-list',
@@ -16,20 +19,29 @@ import { MatCardSmImage } from '@angular/material';
 export class MobileListComponent implements OnInit {
   /** Based on the screen size, switch from standard to one column per row */
   public mails: Mail[];
-
+  public myCards: Card[];
+  public mail: Mail;
   public cards;
-  public myCards = [];
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private mailService: MailService
-  ) {  }
-  ngOnInit(): void {
-    this.loadProtocols();
-  }
+    private mailService: MailService,
+    private dataService: DataService,
+    private dialog: MatDialog
+  ) {
+    this.mail = {
+      allegati: 0,
+      dataInvio: new Date(),
+      dataRicezione: new Date(),
+      destinatario: '',
+      mittente: '',
+      oggetto: '',
+      protId: '',
+      tipo: Tipo.Entrata
+    };
 
-  loadProtocols(): void {
-    this.mailService.getProtocols().subscribe(m => {
+    this.dataService.mailsData.subscribe(m => {
       this.mails = m;
+      this.myCards = [];
       this.cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
         map(({ matches }) => {
           if (matches) {
@@ -61,6 +73,13 @@ export class MobileListComponent implements OnInit {
       );
     });
   }
+  ngOnInit(): void {
+    // this.loadCards(this.mails);
+  }
+
+  // loadCards(loadedMails): void {
+
+  // }
 
   deleteCard(id) {
     for (let i = this.myCards.length - 1; i >= 0; i--) {
@@ -74,5 +93,16 @@ export class MobileListComponent implements OnInit {
   deleteMail(id: string) {
     this.deleteCard(id);
     this.mailService.deleteProtocol(id).subscribe();
+  }
+
+  editMail(mail: Mail) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = mail;
+    const dialogRef = this.dialog.open(DialogComponent,
+      dialogConfig);
+    dialogRef.afterClosed().subscribe(
+      val => console.log('Dialog output:', val)
+    );
   }
 }
