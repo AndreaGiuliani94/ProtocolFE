@@ -1,4 +1,4 @@
-<h1 mat-dialog-title >Edit Mail</h1>
+<h1 mat-dialog-title> {{ (this.mail.protId=='') ? "Insert New Mail" : "Edit Mail"}}</h1>
 <form [formGroup]="insertForm" (ngSubmit)="onSubmit()">
 
   <mat-form-field>

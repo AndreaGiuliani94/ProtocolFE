@@ -1,6 +1,6 @@
 <div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
-  <mat-grid-list cols="2" rowHeight="350px">
+  <mat-grid-list cols="4" rowHeight="250px">
     <mat-grid-tile  *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
         <mat-card-header>
@@ -18,17 +18,19 @@
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
           <div>
+            <h3> Oggetto </h3>{{card.body.oggetto}}</div>
+          <div>
             <h3> Data di Invio </h3>{{card.body.dataInvio}}</div>
           <div>
-            <h3> Data di Ricezione </h3>{{card.body.dataRicezione}}</div>
-          <div>
             <h3> Mittente </h3>{{card.body.mittente}}</div>
+          <!--<div>
+            <h3> Data di Ricezione </h3>{{card.body.dataRicezione}}</div>
           <div>
             <h3> Destinatario </h3>{{card.body.destinatario}}</div>
           <div>
             <h3> N° Allegati </h3>{{card.body.allegati}}</div>
           <div>
-            <h3> Tipo di Mail </h3>{{card.body.tipo}}</div>
+            <h3> Tipo di Mail </h3>{{card.body.tipo}}</div> -->
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

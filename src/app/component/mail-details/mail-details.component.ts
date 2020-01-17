@@ -28,7 +28,7 @@ export class MailDetailsComponent implements OnInit {
     if (param) {
       const id = (+param).toString();
       this.mailService.getDetails(id).subscribe(m => this.card = {
-        title: m.oggetto,
+        title: m.protId,
         cols: 2,
         rows: 1,
         body: m});

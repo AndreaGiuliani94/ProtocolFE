@@ -29,38 +29,39 @@ export class MobileListComponent implements OnInit {
     private dialog: MatDialog
   ) {
     this.mail = {
-      allegati: 0,
-      dataInvio: new Date(),
-      dataRicezione: new Date(),
+      allegati: null,
+      dataInvio: null,
+      dataRicezione: null,
       destinatario: '',
       mittente: '',
       oggetto: '',
       protId: '',
-      tipo: Tipo.Entrata
+      tipo: null
     };
 
     this.dataService.mailsData.subscribe(m => {
       this.mails = m;
-      this.myCards = [];
       this.cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
         map(({ matches }) => {
           if (matches) {
+            this.myCards = [];
             // tslint:disable-next-line: no-shadowed-variable
             this.mails.forEach(element => {
               const c: Card = {
-                title: element.oggetto,
-                cols: 2,
-                rows: 1,
+                title: element.protId,
+                cols: 4,
+                rows: 2,
                 body: element
               };
               this.myCards.push(c);
             });
             return this.myCards;
           } else {
+            this.myCards = [];
             // tslint:disable-next-line: no-shadowed-variable
             this.mails.forEach(element => {
               const c: Card = {
-                title: element.oggetto,
+                title: element.protId,
                 cols: 1,
                 rows: 2,
                 body: element
@@ -71,28 +72,27 @@ export class MobileListComponent implements OnInit {
           }
         })
       );
-    });
+    } );
   }
   ngOnInit(): void {
-    // this.loadCards(this.mails);
   }
 
-  // loadCards(loadedMails): void {
+  // loadCards(): void {
 
   // }
 
-  deleteCard(id) {
-    for (let i = this.myCards.length - 1; i >= 0; i--) {
-      if (this.myCards[i].body.protId === id) {
-        this.myCards.splice(i, 1);
-      }
-    }
-    return this.myCards;
-  }
+  // deleteCard(id) {
+  //   for (let i = this.myCards.length - 1; i >= 0; i--) {
+  //     if (this.myCards[i].body.protId === id) {
+  //       this.myCards.splice(i, 1);
+  //     }
+  //   }
+  //   return this.myCards;
+  // }
 
   deleteMail(id: string) {
-    this.deleteCard(id);
-    this.mailService.deleteProtocol(id).subscribe();
+    //  this.deleteCard(id);
+    this.mailService.deleteProtocol(id).subscribe(r => this.dataService.updateMails());
   }
 
   editMail(mail: Mail) {
@@ -102,7 +102,10 @@ export class MobileListComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogComponent,
       dialogConfig);
     dialogRef.afterClosed().subscribe(
-      val => console.log('Dialog output:', val)
+      val => {
+        console.log('Dialog output:', val);
+        this.dataService.updateMails();
+      }
     );
   }
 }
