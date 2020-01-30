@@ -1,43 +1,33 @@
 <div class="grid-container">
-  <h1 class="mat-h1">Dashboard</h1>
-  <mat-grid-list cols="4" rowHeight="250px">
+  <h1 class="mat-h1">Protocolli</h1>
+  <mat-grid-list cols="4" rowHeight="150px">
     <mat-grid-tile  *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
-            <h2>{{card.title}}</h2>
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item [routerLink]="['/details', card.body.protId]">Details</button>
-              <button mat-menu-item (click)="editMail(card.body)">Update</button>
-              <button mat-menu-item (click)="deleteMail(card.body.protId)">Delete</button>
-            </mat-menu>
+            <span class="card-title">{{card.title}}</span>
           </mat-card-title>
+          <div class="header-button"><button mat-mini-fab color="primary" (click)="editMail(card.body)">
+            <mat-icon >create</mat-icon></button>
+          <button mat-mini-fab class="delete-button" color="warn" (click)="deleteMail(card.body.protId)">
+            <mat-icon>delete_sweep</mat-icon></button></div>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
           <div>
-            <h3> Oggetto </h3>{{card.body.oggetto}}</div>
+            <span class="property-name">Oggetto: </span>{{card.body.oggetto}}</div>
           <div>
-            <h3> Data di Invio </h3>{{card.body.dataInvio}}</div>
+            <span class="property-name">Data di Invio: </span>{{card.body.dataInvio}}</div>
           <div>
-            <h3> Mittente </h3>{{card.body.mittente}}</div>
-          <!--<div>
-            <h3> Data di Ricezione </h3>{{card.body.dataRicezione}}</div>
-          <div>
-            <h3> Destinatario </h3>{{card.body.destinatario}}</div>
-          <div>
-            <h3> N° Allegati </h3>{{card.body.allegati}}</div>
-          <div>
-            <h3> Tipo di Mail </h3>{{card.body.tipo}}</div> -->
+            <span class="property-name">Mittente: </span>{{card.body.mittente}}</div>
+          <br>
+        <button class="details-button" mat-raised-button color="accent" [routerLink]="['/details', card.body.protId]">Details</button>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
 
-  <button class="plus-button" mat-icon-button (click)="editMail(mail)">
-    <mat-icon>add_circle</mat-icon>
+  <button class="more-button" mat-fab color="primary" (click)="editMail(mail)">
+    <mat-icon>add</mat-icon>
   </button>
 
 </div>

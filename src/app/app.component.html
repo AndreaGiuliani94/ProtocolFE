@@ -9,6 +9,14 @@
       <a mat-list-item [routerLink]="['/mobile']">Dashboard</a>
       <a mat-list-item [routerLink]="['/form']">Insert</a>
     </mat-nav-list>
+    <mat-slide-toggle
+          class="dark-mode"
+          [checked]="checked" (click)="(changeTheme())">
+        {{ (isDark) ? "Dark" : "Light" }}
+      </mat-slide-toggle>
+
+    <!-- <button mat-raised-button color="primary" (click)="onSetTheme('default-theme')">Default</button>
+    <button mat-raised-button color="primary" (click)="onSetTheme('light-theme')">Light</button> -->
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color='accent'>
@@ -20,7 +28,11 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span class='pageTitle'>{{title}}</span>
+      <button mat-icon-button class="home-button" (click)="homepage()">
+        <mat-icon>home</mat-icon>
+      </button>
     </mat-toolbar>
+
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
   </mat-sidenav-content>

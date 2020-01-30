@@ -16,7 +16,6 @@ export class MailService {
 
   insertNewMail(newMail: Mail): Observable <Mail>  {
     const header = new HttpHeaders({'Content-Type' : 'application/json'});
-    newMail.protId = (this.counter++).toString();
     return this.http.post<Mail>(this.url, newMail , {headers: header} );
   }
 

@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Mail } from 'src/app/model/mail';
 import { MailService } from 'src/app/services/mail.service';
 import { Card } from 'src/app/model/card';
-import { element } from 'protractor';
-import { Observable } from 'rxjs';
-import { MatCardSmImage, MatDialogConfig, MatDialog } from '@angular/material';
+import { MatDialogConfig, MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DialogComponent } from '../dialog/dialog.component';
 
@@ -24,12 +20,11 @@ export class MailDetailsComponent implements OnInit {
     private router: Router) {}
 
   ngOnInit() {
-    const param = this.route.snapshot.paramMap.get('id');
-    if (param) {
-      const id = (+param).toString();
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
       this.mailService.getDetails(id).subscribe(m => this.card = {
-        title: m.protId,
-        cols: 2,
+        title: m.oggetto,
+        cols: 1,
         rows: 1,
         body: m});
     }

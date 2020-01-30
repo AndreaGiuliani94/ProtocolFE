@@ -1,7 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-// tslint:disable-next-line: max-line-length
-import { MatFormFieldModule, MatDatepicker, MatDatepickerModule, MatInputModule, MatNativeDateModule, MatRadioModule, MatSelectModule, MatOptionModule, MatSlideToggleModule, MatDialogModule } from '@angular/material';
+import { MatFormFieldModule,
+  MatDatepickerModule,
+  MatInputModule,
+  MatNativeDateModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatOptionModule,
+  MatSlideToggleModule,
+  MatDialogModule,
+  MatSnackBarModule,
+  MatButtonToggleModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,7 +25,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { WelcomeComponent } from './component/welcome/welcome.component';
 import { FormComponent } from './component/form/form.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MobileListComponent } from './component/mobile-list/mobile-list.component';
@@ -24,23 +32,25 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MailDetailsComponent } from './component/mail-details/mail-details.component';
-import { DialogComponent } from './component/dialog/dialog.component';
+import { DialogComponent, SnackBarComponent } from './component/dialog/dialog.component';
+import { OverlayModule} from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
     AppComponent,
     MailListComponent,
-    WelcomeComponent,
     FormComponent,
     MobileListComponent,
     MailDetailsComponent,
-    DialogComponent
+    DialogComponent,
+    SnackBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
+    OverlayModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -73,7 +83,9 @@ import { DialogComponent } from './component/dialog/dialog.component';
     MatSelectModule,
     MatOptionModule,
     MatSlideToggleModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule,
+    MatButtonToggleModule
   ],
   exports: [
     MatButtonModule,
@@ -89,9 +101,11 @@ import { DialogComponent } from './component/dialog/dialog.component';
     MatRadioModule,
     MatSelectModule,
     MatOptionModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatButtonToggleModule
   ],
-  entryComponents: [DialogComponent],
+  entryComponents: [DialogComponent, SnackBarComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

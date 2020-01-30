@@ -4,11 +4,8 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Mail } from 'src/app/model/mail';
 import { MailService } from 'src/app/services/mail.service';
 import { Card } from 'src/app/model/card';
-import { element } from 'protractor';
-import { Observable } from 'rxjs';
-import { MatCardSmImage, MatDialogConfig, MatDialog } from '@angular/material';
+import { MatDialogConfig, MatDialog, MatSnackBar } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
-import { Tipo } from 'src/app/model/tipo.enum';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -26,7 +23,8 @@ export class MobileListComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     private mailService: MailService,
     private dataService: DataService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {
     this.mail = {
       allegati: null,
@@ -48,7 +46,7 @@ export class MobileListComponent implements OnInit {
             // tslint:disable-next-line: no-shadowed-variable
             this.mails.forEach(element => {
               const c: Card = {
-                title: element.protId,
+                title: element.oggetto,
                 cols: 4,
                 rows: 2,
                 body: element
@@ -61,7 +59,7 @@ export class MobileListComponent implements OnInit {
             // tslint:disable-next-line: no-shadowed-variable
             this.mails.forEach(element => {
               const c: Card = {
-                title: element.protId,
+                title: element.oggetto,
                 cols: 1,
                 rows: 2,
                 body: element
@@ -92,7 +90,12 @@ export class MobileListComponent implements OnInit {
 
   deleteMail(id: string) {
     //  this.deleteCard(id);
-    this.mailService.deleteProtocol(id).subscribe(r => this.dataService.updateMails());
+    this.mailService.deleteProtocol(id).subscribe(r => {
+      this.dataService.updateMails();
+      this.snackBar.open('Protocollo Cancelato', '', {
+        duration: 3000
+      });
+      });
   }
 
   editMail(mail: Mail) {
